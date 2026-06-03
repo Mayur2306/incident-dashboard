@@ -1,0 +1,57 @@
+<section class="detail-shell">
+  <div class="detail-header">
+    <button class="back-button" type="button" (click)="goBack()">← Back to incidents</button>
+    <h1>Incident details</h1>
+  </div>
+
+  <div *ngIf="loading$ | async" class="status-message loading">Loading incident details...</div>
+
+  <ng-container *ngIf="!(loading$ | async)">
+    <ng-container *ngIf="incident$ | async as incident; else notFound">
+      <article class="incident-card" aria-label="Incident details">
+        <div class="meta-row">
+          <span class="label">ID</span>
+          <strong>{{ incident.id }}</strong>
+        </div>
+        <div class="meta-row">
+          <span class="label">Service</span>
+          <span>{{ incident.service }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="label">Severity</span>
+          <span>{{ incident.severity }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="label">Owner</span>
+          <span>{{ incident.owner }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="label">Created</span>
+          <span>{{ incident.createdAt | date: 'medium' }}</span>
+        </div>
+
+        <section class="incident-body">
+          <h2>{{ incident.title }}</h2>
+          <p>{{ incident.description }}</p>
+          <p class="impact"><strong>Impact:</strong> {{ incident.impact }}</p>
+        </section>
+
+        <label class="status-field">
+          <span>Update status</span>
+          <select
+            [(ngModel)]="selectedStatus"
+            (ngModelChange)="updateStatus($event)"
+            name="incident-status"
+            aria-label="Change incident status"
+          >
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
+        </label>
+      </article>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #notFound>
+    <div class="state-message error">Incident not found. Return to the list and choose another item.</div>
+  </ng-template>
+</section>

@@ -1,0 +1,39 @@
+﻿:host {
+  display: block;
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #111827;
+}
+
+.app-shell {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  color: #4338ca;
+}
+
+h1 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(2rem, 2.5vw, 2.5rem);
+}
+
+.app-main {
+  margin-top: 1.5rem;
+}

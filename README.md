@@ -1,4 +1,4 @@
-# Incident Dashboard
+﻿# Incident Dashboard
 
 A small Angular 19 incident management UI with:
 

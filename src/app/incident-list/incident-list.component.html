@@ -1,0 +1,91 @@
+<section class="list-shell">
+  <header class="list-header">
+    <div>
+      <p class="eyebrow">Incident Dashboard</p>
+      <h1>Manage incidents</h1>
+      <p class="description">Filter by status, severity, or service. Search by title or ID, then open details or update status.</p>
+    </div>
+
+    <button class="reload-button" type="button" (click)="reload()">Reload data</button>
+  </header>
+
+  <section class="filters" aria-label="Filter incidents">
+    <label class="filter-field">
+      <span>Search</span>
+      <input
+        type="search"
+        [(ngModel)]="searchQuery"
+        placeholder="Title or ID"
+        aria-label="Search incidents by title or ID"
+      />
+    </label>
+
+    <label class="filter-field">
+      <span>Status</span>
+      <select [(ngModel)]="filterStatus" aria-label="Filter by status">
+        <option *ngFor="let option of statusOptions" [value]="option">{{ option }}</option>
+      </select>
+    </label>
+
+    <label class="filter-field">
+      <span>Severity</span>
+      <select [(ngModel)]="filterSeverity" aria-label="Filter by severity">
+        <option *ngFor="let option of severityOptions" [value]="option">{{ option }}</option>
+      </select>
+    </label>
+
+    <label class="filter-field">
+      <span>Service</span>
+      <select [(ngModel)]="filterService" aria-label="Filter by service">
+        <option *ngFor="let option of serviceOptions" [value]="option">{{ option }}</option>
+      </select>
+    </label>
+
+    <div class="filter-actions">
+      <button class="reset-button" type="button" (click)="resetFilters()">Reset filters</button>
+    </div>
+  </section>
+
+  <section class="status-messages" aria-live="polite">
+    <div *ngIf="loading$ | async" class="state-message loading">Loading incidents...</div>
+    <div *ngIf="(error$ | async) as error" class="state-message error">{{ error }}</div>
+  </section>
+
+  <ng-container *ngIf="!(loading$ | async) && !(error$ | async)">
+    <div *ngIf="filteredIncidents.length === 0; else incidentTable" class="empty-state">
+      <p>No incidents match the current filters.</p>
+      <p>Try clearing the search or changing the filters.</p>
+    </div>
+
+    <ng-template #incidentTable>
+      <table class="incident-table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Service</th>
+            <th scope="col">Severity</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let incident of filteredIncidents">
+            <td>{{ incident.id }}</td>
+            <td>
+              <a [routerLink]="['/incident', incident.id]">{{ incident.title }}</a>
+            </td>
+            <td>{{ incident.service }}</td>
+            <td>{{ incident.severity }}</td>
+            <td>
+              <span class="status-chip">{{ incident.status }}</span>
+            </td>
+            <td>
+              <a class="details-link" [routerLink]="['/incident', incident.id]">Details</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </ng-container>
+</section>

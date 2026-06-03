@@ -1,0 +1,151 @@
+.list-shell {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.list-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.25rem;
+  color: #6366f1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0.5rem 0 0;
+  color: #475569;
+}
+
+.reload-button {
+  padding: 0.85rem 1.25rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: #4338ca;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filters {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.filter-actions {
+  display: flex;
+  align-items: end;
+}
+
+.reset-button {
+  padding: 0.85rem 1.25rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  background: white;
+  color: #334155;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.reset-button:hover {
+  background: #f8fafc;
+}
+
+.filter-field {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #334155;
+}
+
+.filter-field input,
+.filter-field select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.incident-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.incident-table th,
+.incident-table td {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.incident-table th {
+  color: #475569;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.incident-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.incident-table a,
+.details-link {
+  color: #4338ca;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.status-message {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+}
+
+.loading {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.error {
+  color: #b91c1c;
+  background: #fee2e2;
+}
+
+.empty-state {
+  padding: 2rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 1rem;
+  text-align: center;
+  color: #64748b;
+}
